@@ -11,7 +11,7 @@ const Detalles = ({ route }) => {
         <Text style={styles.title}>{cabana.nombre}</Text>
       </View>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Reservar</Text>
+        <Text style={styles.buttonText}>Editar</Text>
       </TouchableOpacity>
     </View>
   );

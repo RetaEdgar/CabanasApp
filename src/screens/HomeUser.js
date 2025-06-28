@@ -4,13 +4,10 @@ import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, TextInput } 
 
 const cabanas = [
   { id: '1', nombre: 'reta', imagen: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg', descripcion: 'Información de la cabaña', },
-  { id: '2', nombre: 'santillan', imagen: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg', descripcion: 'Información de la cabaña',},
-  { id: '3', nombre: 'navarro', imagen: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg', descripcion: 'Información de la cabaña',},
-  { id: '4', nombre: 'sanchez', imagen: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg', descripcion: 'Información de la cabaña',},
-  { id: '5', nombre: 'rosales', imagen: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg', descripcion: 'Información de la cabaña',},
+  
 ];
 
-const Home = ({ navigation }) => {
+const HomeUser = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredCabins = cabanas.filter((cabana) =>
@@ -48,7 +45,7 @@ const Home = ({ navigation }) => {
   );
 };
 
-export default Home;
+export default HomeUser;
 
 
 const styles = StyleSheet.create({

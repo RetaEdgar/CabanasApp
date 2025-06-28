@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
 
 const Login = ({ navigation }) => {
   const [correo, setCorreo] = useState('');
@@ -7,18 +7,21 @@ const Login = ({ navigation }) => {
 
   const handleLogin = () => {
     if (correo === 'Reta' && contrasena === '123') {
-      navigation.replace('Main'); // Asegúrate de que 'Main' esté definido en tu StackNavigator
+      navigation.replace('MainUser');
+    } else if (correo === 'Admin' && contrasena === 'admin123') {
+      navigation.replace('MainAdmin');
     } else {
-      alert('Por favor, ingresa correo y contraseña.');
+      Alert.alert('Error', 'Correo o contraseña incorrectos.');
     }
   };
 
   const handleRegister = () => {
-    navigation.navigate('Register'); // Asegúrate de tener 'Register' definido también
+    navigation.navigate('Register');
   };
 
   return (
     <View style={styles.container}>
+      <Image source={require('../../assets/Logo1_transparente.png')} style={styles.logo} />
       <View style={styles.card}>
         <Text style={styles.label}>CORREO:</Text>
         <TextInput
@@ -56,17 +59,23 @@ export default Login;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#c9b697', // fondo beige
+    backgroundColor: '#c9b697',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  logo: {
+    width: 160,
+    height: 160,
+    resizeMode: 'contain',
+    marginBottom: 20,
+  },
   card: {
-    backgroundColor: '#f1f1f1', // fondo blanco
+    backgroundColor: '#f1f1f1',
     width: '85%',
     padding: 25,
     borderRadius: 20,
     borderWidth: 4,
-    borderColor: '#4a6843', // borde verde oscuro
+    borderColor: '#4a6843',
   },
   label: {
     fontWeight: 'bold',

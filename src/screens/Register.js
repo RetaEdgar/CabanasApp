@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 const RegisterScreen = ({ navigation }) => {
   const [correo, setCorreo] = useState('');
@@ -23,6 +23,7 @@ const RegisterScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <Image source={require('../../assets/Logo1_transparente.png')} style={styles.logo} />
       <View style={styles.card}>
         <Text style={styles.label}>CORREO:</Text>
         <TextInput
@@ -77,6 +78,12 @@ const styles = StyleSheet.create({
       borderRadius: 20,
       borderWidth: 4,
       borderColor: '#4a6843',
+    },
+    logo: {
+      width: 160,
+      height: 160,
+      resizeMode: 'contain',
+      marginBottom: 20,
     },
     label: {
       fontWeight: 'bold',
