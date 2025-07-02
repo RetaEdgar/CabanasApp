@@ -43,7 +43,7 @@ const AireAcondicionado = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#D2B48C',
+    backgroundColor: '#CAB99D',
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',

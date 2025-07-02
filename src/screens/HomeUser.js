@@ -51,7 +51,7 @@ export default HomeUser;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#c9b697',
+    backgroundColor: '#CAB99D',
     padding: 10,
   },
   grid: {

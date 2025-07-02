@@ -5,30 +5,19 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const Ubicacion = ({ navigation }) => {
   const ubicacion = {
-    latitude: 23.725620491220205,  // Reemplaza con latitud real
-    longitude: -105.68312196100753, // Reemplaza con longitud real
+    latitude: 23.725620491220205,  
+    longitude: -105.68312196100753, 
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   };
 
   return (
     <View style={styles.container}>
-      {/* Encabezado */}
-      {/* <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.openDrawer()}>
-          <Icon name="menu-outline" size={28} color="#fff" />
-        </TouchableOpacity>
-        <Text style={styles.title}>UBICACION</Text>
-        <Icon name="person-circle-outline" size={28} color="#fff" />
-      </View> */}
 
-      {/* Mapa */}
       <MapView style={styles.map} initialRegion={ubicacion}>
         <Marker coordinate={ubicacion} title="Villa Coronado" />
-        {/* Puedes agregar más Marker si es necesario */}
       </MapView>
 
-      {/* Caja flotante */}
       <View style={styles.floatingBox}>
         <Text style={styles.locationName}>Villa Coronado</Text>
         <Icon name="location-sharp" size={20} color="#d32f2f" />

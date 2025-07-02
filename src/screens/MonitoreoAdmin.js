@@ -48,7 +48,7 @@ const Monitoreo = () => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#D2B48C',
+    backgroundColor: '#CAB99D',
     padding: 16,
   },
   cardContainer: {

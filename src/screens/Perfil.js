@@ -9,12 +9,9 @@ const Perfil = () => {
         source={require('../../assets/Logo2_transparente.png')} // Usa tu propia imagen
         style={styles.avatar}
       />
-      <Text style={styles.nombre}>Juan Pérez</Text>
-      <Text style={styles.email}>juanperez@email.com</Text>
-      <View style={styles.infoBox}>
-        <Text style={styles.label}>Tipo de usuario:</Text>
-        <Text style={styles.valor}>Usuario regular</Text>
-      </View>
+      <Text style={styles.nombre}>Edgar Reta</Text>
+      <Text style={styles.email}>edgarreta@gmail.com</Text>
+      
       <View style={styles.infoBox}>
         <Text style={styles.label}>Cabaña asignada:</Text>
         <Text style={styles.valor}>Cabaña 3</Text>

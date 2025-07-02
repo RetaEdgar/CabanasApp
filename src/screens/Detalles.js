@@ -11,7 +11,7 @@ const Detalles = ({ route }) => {
         <Text style={styles.title}>{cabana.nombre}</Text>
       </View>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Editar</Text>
+        <Text style={styles.buttonText}>Ver detalle de la reserva</Text>
       </TouchableOpacity>
     </View>
   );
@@ -22,7 +22,7 @@ export default Detalles;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#D6C4A1',
+    backgroundColor: '#CAB99D',
     alignItems: 'center',
     justifyContent: 'center',
   },
