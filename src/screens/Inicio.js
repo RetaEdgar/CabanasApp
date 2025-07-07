@@ -3,11 +3,11 @@ import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'rea
 import { useNavigation } from '@react-navigation/native';
 
 const devs = [
-  { id: '1', nombre: 'Reta Ravelo Edgar Jesus', imagen: require('../../assets/Logo1.png'), rol: 'Información de la cabaña', descripcion: 'Responsable del diseño visual y experiencia del usuario.' },
-  { id: '2', nombre: 'Garcia Santillan Edgar Jair', imagen: require('../../assets/Logo1.png'), rol: 'Información de la cabaña', descripcion: 'Responsable del diseño visual y experiencia del usuario.' },
-  { id: '3', nombre: 'Navarro Huerta Carlos Jair', imagen: require('../../assets/Logo1.png'), rol: 'Información de la cabaña', descripcion: 'Responsable del diseño visual y experiencia del usuario.' },
-  { id: '4', nombre: 'Sanches Irigoyen Pablo Manuel', imagen: require('../../assets/Logo1.png'), rol: 'Información de la cabaña', descripcion: 'Responsable del diseño visual y experiencia del usuario.' },
-  { id: '5', nombre: 'Rosales Garcia Matias Manuel', imagen: require('../../assets/Logo1.png'), rol: 'Información de la cabaña',descripcion: 'Responsable del diseño visual y experiencia del usuario.' }
+  { id: '1', nombre: 'Reta Ravelo Edgar Jesus', imagen: require('../../assets/Logo1.png'), rol: 'Lider, Tester y FrontEnd', descripcion: 'Responsable del FrontEnd de la aplicacion movil y avances de los integrantes' },
+  { id: '2', nombre: 'Garcia Santillan Edgar Jair', imagen: require('../../assets/Logo1.png'), rol: 'FrontEnd', descripcion: 'Responsable del diseño visual de la pagina web y experiencia del usuario.' },
+  { id: '3', nombre: 'Navarro Huerta Carlos Jair', imagen: require('../../assets/Logo1.png'), rol: 'BackEnd', descripcion: 'Responsable de la funcionalidad de las aplicaciones.' },
+  { id: '4', nombre: 'Sanches Irigoyen Pablo Manuel', imagen: require('../../assets/Logo1.png'), rol: 'FullStack', descripcion: 'Responsable del diseño de la pagina web y conexion a BackEnd.' },
+  { id: '5', nombre: 'Rosales Garcia Matias Manuel', imagen: require('../../assets/Logo1.png'), rol: 'IoT y BackEnd',descripcion: 'Responsable de la conexion entre la base de datos y el prototipo de IoT.' }
 ];
 
 const Inicio = () => {
