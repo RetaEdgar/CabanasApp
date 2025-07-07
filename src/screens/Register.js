@@ -17,8 +17,7 @@ const RegisterScreen = ({ navigation }) => {
       return;
     }
 
-    // Aquí podrías enviar los datos a una API, guardar en asyncStorage, etc.
-    navigation.replace('Main'); // Redirige a Home/Main tras registrarse
+    navigation.replace('Main'); 
   };
 
   return (

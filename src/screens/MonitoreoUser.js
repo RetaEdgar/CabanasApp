@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 const AireAcondicionado = () => {
   const [aireEncendido, setAireEncendido] = useState(false);
-  const [tempActual] = useState(27); // valor fijo para la demo
+  const [tempActual] = useState(27); 
   const [tempAire, setTempAire] = useState(25);
 
   const toggleAire = () => setAireEncendido(!aireEncendido);

@@ -23,7 +23,6 @@ const Monitoreo = () => {
     <ScrollView contentContainerStyle={styles.container}>
       {cabañas.map((cabana) => (
         <View key={cabana.id} style={styles.cardContainer}>
-          {/* Tarjeta estilo Home */}
           <View style={styles.card}>
             <Image source={{ uri: cabana.image }} style={styles.image} />
             <Text style={styles.title}>{cabana.title}</Text>

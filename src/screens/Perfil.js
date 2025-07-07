@@ -1,4 +1,3 @@
-// screens/Perfil.js
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
@@ -6,7 +5,7 @@ const Perfil = () => {
   return (
     <View style={styles.container}>
       <Image
-        source={require('../../assets/Logo2_transparente.png')} // Usa tu propia imagen
+        source={require('../../assets/Logo2_transparente.png')} 
         style={styles.avatar}
       />
       <Text style={styles.nombre}>Edgar Reta</Text>
