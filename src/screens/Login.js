@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
+import { View, Text, TextInput, Pressable, StyleSheet, Alert, Image, KeyboardAvoidingView, Platform } from 'react-native';
+import Animated, { FadeIn, FadeOut, Layout } from 'react-native-reanimated';
 
 const Login = ({ navigation }) => {
   const [correo, setCorreo] = useState('');
   const [contrasena, setContrasena] = useState('');
+  const [error, setError] = useState('');
 
   const handleLogin = () => {
+    setError('');
+    if (!correo || !contrasena) {
+      setError('Por favor llena todos los campos.');
+      return;
+    }
+
     if (correo === 'Reta' && contrasena === '123') {
       navigation.replace('MainUser');
     } else if (correo === 'Admin' && contrasena === 'admin123') {
       navigation.replace('MainAdmin');
     } else {
-      Alert.alert('Error', 'Correo o contraseña incorrectos.');
+      setError('Correo o contraseña incorrectos.');
     }
   };
 
@@ -20,9 +28,15 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Image source={require('../../assets/Logo1_transparente.png')} style={styles.logo} />
-      <View style={styles.card}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      style={styles.container}
+    >
+      <Animated.View entering={FadeIn.duration(600)} exiting={FadeOut.duration(300)} layout={Layout.springify()}>
+        <Image source={require('../../assets/Logo1_transparente.png')} style={styles.logo} />
+      </Animated.View>
+
+      <Animated.View entering={FadeIn.duration(800).delay(300)} style={styles.card}>
         <Text style={styles.label}>CORREO:</Text>
         <TextInput
           style={styles.input}
@@ -30,6 +44,8 @@ const Login = ({ navigation }) => {
           onChangeText={setCorreo}
           placeholder="usuario@ejemplo.com"
           placeholderTextColor="#555"
+          keyboardType="email-address"
+          autoCapitalize="none"
         />
 
         <Text style={styles.label}>CONTRASEÑA:</Text>
@@ -42,15 +58,37 @@ const Login = ({ navigation }) => {
           secureTextEntry
         />
 
-        <TouchableOpacity onPress={handleLogin} style={styles.button}>
-          <Text style={styles.buttonText}>Iniciar sesión</Text>
-        </TouchableOpacity>
+        {error ? (
+          <Animated.Text
+            entering={FadeIn}
+            exiting={FadeOut}
+            style={styles.errorText}
+          >
+            {error}
+          </Animated.Text>
+        ) : null}
 
-        <TouchableOpacity onPress={handleRegister} style={styles.secondaryButton}>
+        <Pressable
+          onPress={handleLogin}
+          style={({ pressed }) => [
+            styles.button,
+            pressed && { opacity: 0.7 }
+          ]}
+        >
+          <Text style={styles.buttonText}>Iniciar sesión</Text>
+        </Pressable>
+
+        <Pressable
+          onPress={handleRegister}
+          style={({ pressed }) => [
+            styles.secondaryButton,
+            pressed && { opacity: 0.7 }
+          ]}
+        >
           <Text style={styles.secondaryButtonText}>Crear usuario</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+        </Pressable>
+      </Animated.View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -62,6 +100,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#CAB99D',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingHorizontal: 20,
   },
   logo: {
     width: 160,
@@ -71,11 +110,16 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: '#f1f1f1',
-    width: '85%',
+    width: '100%',
     padding: 25,
     borderRadius: 20,
     borderWidth: 4,
     borderColor: '#4a6843',
+    shadowColor: '#4a6843',
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 5 },
+    elevation: 7,
   },
   label: {
     fontWeight: 'bold',
@@ -95,9 +139,14 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#4a6843',
-    padding: 12,
+    padding: 14,
     borderRadius: 20,
     marginTop: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 5,
   },
   buttonText: {
     color: '#fff',
@@ -107,13 +156,24 @@ const styles = StyleSheet.create({
   },
   secondaryButton: {
     marginTop: 12,
-    padding: 10,
+    padding: 12,
     borderRadius: 20,
     backgroundColor: '#8fa987',
+    shadowColor: '#000',
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 1 },
+    elevation: 3,
   },
   secondaryButtonText: {
     color: '#fff',
     textAlign: 'center',
     fontWeight: '600',
+  },
+  errorText: {
+    color: 'red',
+    fontWeight: 'bold',
+    marginBottom: 10,
+    textAlign: 'center',
   },
 });

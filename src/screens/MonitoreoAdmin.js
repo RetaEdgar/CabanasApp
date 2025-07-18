@@ -1,46 +1,71 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, Dimensions } from 'react-native';
 
 const cabañas = [
   {
     id: '1',
     title: 'Cabaña 1',
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=60',
+    image: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg',
     temperatura: '26',
     humedad: '20',
   },
   {
     id: '2',
     title: 'Cabaña 2',
-    image: 'https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=60',
-    temperatura: '26',
-    humedad: '20',
+    image: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg',
+    temperatura: '24',
+    humedad: '30',
+  },
+  {
+    id: '3',
+    title: 'Cabaña 3',
+    image: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg',
+    temperatura: '25',
+    humedad: '40',
+  },
+  {
+    id: '4',
+    title: 'Cabaña 4',
+    image: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg',
+    temperatura: '27',
+    humedad: '35',
+  },
+  {
+    id: '5',
+    title: 'Cabaña 5',
+    image: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg',
+    temperatura: '23',
+    humedad: '25',
+  },
+  {
+    id: '6',
+    title: 'Cabaña 6',
+    image: 'https://cabañasenrenta.com/wp-content/uploads/2023/03/cabanas-en-durango-amanecer-en-mexiquillo-1.jpg',
+    temperatura: '28',
+    humedad: '45',
   },
 ];
+
+const screenWidth = Dimensions.get('window').width;
+const cardWidth = (screenWidth - 48) / 2; // dos columnas con márgenes
 
 const Monitoreo = () => {
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {cabañas.map((cabana) => (
-        <View key={cabana.id} style={styles.cardContainer}>
-          <View style={styles.card}>
+      <View style={styles.grid}>
+        {cabañas.map((cabana) => (
+          <View key={cabana.id} style={[styles.card, { width: cardWidth }]}>
             <Image source={{ uri: cabana.image }} style={styles.image} />
             <Text style={styles.title}>{cabana.title}</Text>
-          </View>
-
-          {/* Datos de temperatura y humedad */}
-          <View style={styles.dataContainer}>
-            <Text style={styles.label}>Temperatura:</Text>
-            <View style={styles.dataBox}>
-              <Text style={styles.dataText}>{cabana.temperatura}°</Text>
-            </View>
-            <Text style={styles.label}>Humedad:</Text>
-            <View style={styles.dataBox}>
+            <View style={styles.dataGroup}>
+              <Text style={styles.label}>🌡 Temperatura</Text>
+              <Text style={styles.dataText}>{cabana.temperatura}°C</Text>
+              <Text style={styles.label}>💧 Humedad</Text>
               <Text style={styles.dataText}>{cabana.humedad}%</Text>
             </View>
           </View>
-        </View>
-      ))}
+        ))}
+      </View>
     </ScrollView>
   );
 };
@@ -48,56 +73,55 @@ const Monitoreo = () => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#CAB99D',
-    padding: 16,
+    paddingVertical: 16,
+    paddingHorizontal: 12,
   },
-  cardContainer: {
+  grid: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 24,
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   },
   card: {
-    backgroundColor: '#D7CCC8',
+    backgroundColor: '#F5F5F5',
+    borderRadius: 16,
     padding: 12,
-    borderRadius: 8,
-    width: '50%',
-    borderWidth: 1,
-    borderColor: '#8D6E63',
-    marginRight: 12,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 4,
+    elevation: 4,
   },
   image: {
     width: '100%',
     height: 100,
-    borderRadius: 6,
-    marginBottom: 8,
+    borderRadius: 12,
+    marginBottom: 10,
   },
   title: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: 'bold',
     color: '#4E342E',
     textAlign: 'center',
+    marginBottom: 8,
   },
-  dataContainer: {
-    flex: 1,
-    justifyContent: 'center',
+  dataGroup: {
+    alignItems: 'center',
   },
   label: {
-    fontWeight: 'bold',
-    fontSize: 14,
-    marginBottom: 4,
-    color: '#333',
-  },
-  dataBox: {
-    backgroundColor: '#F1F1F1',
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    borderRadius: 20,
-    marginBottom: 12,
+    fontSize: 13,
+    color: '#6D4C41',
+    marginBottom: 2,
   },
   dataText: {
-    textAlign: 'center',
+    backgroundColor: '#E0E0E0',
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    borderRadius: 12,
+    fontSize: 14,
     fontWeight: '600',
-    fontSize: 16,
-    color: '#888',
+    color: '#333',
+    marginBottom: 8,
   },
 });
 

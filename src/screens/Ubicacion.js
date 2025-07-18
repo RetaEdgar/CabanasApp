@@ -1,70 +1,58 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Animated, { FadeInUp } from 'react-native-reanimated';
 
-const Ubicacion = ({ navigation }) => {
+const Ubicacion = () => {
   const ubicacion = {
-    latitude: 23.725620491220205,  
-    longitude: -105.68312196100753, 
+    latitude: 23.725620491220205,
+    longitude: -105.68312196100753,
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   };
 
   return (
     <View style={styles.container}>
-
-      <MapView style={styles.map} initialRegion={ubicacion}>
+      <MapView style={styles.map} initialRegion={ubicacion} showsUserLocation={true} loadingEnabled={true}>
         <Marker coordinate={ubicacion} title="Villa Coronado" />
       </MapView>
 
-      <View style={styles.floatingBox}>
+      <Animated.View entering={FadeInUp.duration(800)} style={styles.floatingBox}>
         <Text style={styles.locationName}>Villa Coronado</Text>
-        <Icon name="location-sharp" size={20} color="#d32f2f" />
-      </View>
+        <Icon name="location-sharp" size={22} color="#d32f2f" />
+      </Animated.View>
     </View>
   );
 };
 
+export default Ubicacion;
+
 const styles = StyleSheet.create({
   container: { flex: 1 },
-  header: {
-    backgroundColor: '#4a6843',
-    height: 60,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 15,
-    justifyContent: 'space-between',
-  },
-  title: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 18,
-  },
   map: {
     flex: 1,
   },
   floatingBox: {
     position: 'absolute',
-    bottom: 20,
+    bottom: 25,
     alignSelf: 'center',
     backgroundColor: '#fff',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderRadius: 16,
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    borderRadius: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    elevation: 5,
+    elevation: 8,
     shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowOffset: { width: 0, height: 3 },
-    shadowRadius: 4,
+    shadowOpacity: 0.22,
+    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 8,
   },
   locationName: {
     fontWeight: 'bold',
-    fontSize: 16,
-    marginRight: 8,
+    fontSize: 18,
+    marginRight: 10,
+    color: '#d32f2f',
   },
 });
-
-export default Ubicacion;
